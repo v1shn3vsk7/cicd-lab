@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cicd-lab
+  labels:
+    app: cicd-lab
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cicd-lab
+  template:
+    metadata:
+      labels:
+        app: cicd-lab
+    spec:
+      containers:
+        - name: cicd-lab
+          image: v1shn3vsk7/cicd-lab
+          ports:
+          - containerPort: 8888

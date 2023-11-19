@@ -2,10 +2,10 @@ package app
 
 import (
 	"context"
-	"github.com/v1shn3vsk7/cicd-lab/internal/app/http"
-	"github.com/v1shn3vsk7/cicd-lab/internal/utils"
 
+	"github.com/v1shn3vsk7/cicd-lab/internal/app/http"
 	"github.com/v1shn3vsk7/cicd-lab/internal/config"
+	"github.com/v1shn3vsk7/cicd-lab/internal/utils"
 )
 
 func Run(ctx context.Context, cfg *config.Config) error {
