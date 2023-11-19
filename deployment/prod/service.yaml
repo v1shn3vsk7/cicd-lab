@@ -9,9 +9,8 @@ spec:
     - port: 8888
       protocol: TCP
       targetPort: 8888
-    - name: web
-      port: 8888
-      targetPort: 8888
+      name: http
+      nodePort: 30088
   selector:
     app: cicd-lab
-  type: ClusterIP
+  type: NodePort
