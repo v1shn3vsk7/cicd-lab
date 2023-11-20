@@ -18,4 +18,4 @@ spec:
         - name: cicd-lab
           image: v1shn3vsk7/cicd-lab
           ports:
-          - containerPort: 8888
+            - containerPort: 8888
