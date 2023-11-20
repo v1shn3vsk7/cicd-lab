@@ -1,0 +1,14 @@
+[Unit]
+Description=cicd-lab
+After=network.target
+
+[Service]
+User=v1shn3vsk7
+WorkingDirectory=/v1shn3vsk7/lab/cicd-lab
+ExecStart=/v1shn3vsk7/lab/cicd-lab/cicd-lab
+Restart=always
+RestartSec=4
+StandardOutput=inherit
+
+[Install]
+WantedBy=multi-user.target
