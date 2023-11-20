@@ -8,6 +8,7 @@ import (
 	"github.com/v1shn3vsk7/cicd-lab/internal/utils"
 )
 
+// Run ...
 func Run(ctx context.Context, cfg *config.Config) error {
 	_, cancel := context.WithCancel(ctx)
 

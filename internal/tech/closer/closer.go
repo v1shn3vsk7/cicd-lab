@@ -2,6 +2,7 @@ package closer
 
 import "github.com/rs/zerolog/log"
 
+// ErrorLogger ...
 type ErrorLogger interface {
 	ErrorF(format string, a ...interface{})
 }

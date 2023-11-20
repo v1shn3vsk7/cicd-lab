@@ -14,12 +14,14 @@ import (
 	"github.com/v1shn3vsk7/cicd-lab/internal/tech/closer"
 )
 
+// Server ...
 type Server struct {
 	server   *echo.Echo
 	handlers *handlers.Handlers
 	cfg      *config.Config
 }
 
+// New ...
 func New(cfg *config.Config) *Server {
 	server := echo.New()
 	server.Use(middleware.Recover())
@@ -34,6 +36,7 @@ func New(cfg *config.Config) *Server {
 	}
 }
 
+// Start ...
 func (s *Server) Start() {
 	s.setupRoutes()
 
