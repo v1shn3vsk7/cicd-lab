@@ -3,9 +3,9 @@ Description=cicd-lab
 After=network.target
 
 [Service]
-User=root
-WorkingDirectory=/root/lab/cicd-lab
-ExecStart=/root/lab/cicd-lab/cicd-lab
+User=v1shn3vsk7
+WorkingDirectory=/v1shn3vsk7/lab/cicd-lab
+ExecStart=/v1shn3vsk7/lab/cicd-lab/cicd-lab
 Restart=always
 RestartSec=4
 StandardOutput=inherit
