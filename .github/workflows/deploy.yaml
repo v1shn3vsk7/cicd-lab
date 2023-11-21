@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       HOST: v1shn3vsk7@89.232.170.22
-      DEPLOY_DIRECTORY: /v1shn3vsk7/lab/cicd-lab
+      DEPLOY_DIRECTORY: /root/lab/cicd-lab
 
     steps:
       - name: Checkout repository
