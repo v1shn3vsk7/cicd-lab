@@ -3,7 +3,7 @@ Description=cicd-lab
 After=network.target
 
 [Service]
-User=v1shn3vsk7
+User=root
 WorkingDirectory=/v1shn3vsk7/lab/cicd-lab
 ExecStart=/v1shn3vsk7/lab/cicd-lab/cicd-lab
 Restart=always
