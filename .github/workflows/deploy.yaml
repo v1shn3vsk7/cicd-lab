@@ -37,23 +37,23 @@ jobs:
       - name: Deploy to VM
         run: |
           sudo apt-get install -y ssh rsync
-          echo "$DEPLOY_SSH_KEY" > deploy_key
-          chmod 600 deploy_key
-          ssh -i deploy_key -o StrictHostKeyChecking=no ${{ env.HOST }} "mkdir -p ${{ env.DEPLOY_DIRECTORY }}"
-          rsync -avz -e 'ssh -i deploy_key -o StrictHostKeyChecking=no' --exclude='.git' ./ ${{ env.HOST }}:${{ env.DEPLOY_DIRECTORY }}
+          echo "$DEPLOY_SSH_KEY" > deploy_key.pem
+          chmod 600 deploy_key.pem
+          ssh -i deploy_key.pem -o StrictHostKeyChecking=no ${{ env.HOST }} "mkdir -p ${{ env.DEPLOY_DIRECTORY }}"
+          rsync -avz -e 'ssh -i deploy_key.pem -o StrictHostKeyChecking=no' --exclude='.git' ./ ${{ env.HOST }}:${{ env.DEPLOY_DIRECTORY }}
         env:
           DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
       - name: Remove old systemd service file
         run: |
-          ssh -i deploy_key -o StrictHostKeyChecking=no ${{ env.HOST }} "rm -f /etc/systemd/system/cicd-lab.service"
+          ssh -i deploy_key.pem -o StrictHostKeyChecking=no ${{ env.HOST }} "rm -f /etc/systemd/system/cicd-lab.service"
       - name: List workspace contents
         run: |
           echo "Listing deployment folder contents:"
           ls -la ${{ github.workspace }}/deployment
       - name: Copy systemd service file
         run: |
-          scp -i deploy_key -o StrictHostKeyChecking=no ${{ github.workspace }}/deployment/cicd-lab.service ${{ env.HOST }}:/tmp/cicd-lab.service
-          ssh -i deploy_key -o StrictHostKeyChecking=no ${{ env.HOST }} "mv /tmp/cicd-lab.service /etc/systemd/system/cicd-lab.service"
+          scp -i deploy_key.pem -o StrictHostKeyChecking=no ${{ github.workspace }}/deployment/cicd-lab.service ${{ env.HOST }}:/tmp/cicd-lab.service
+          ssh -i deploy_key.pem -o StrictHostKeyChecking=no ${{ env.HOST }} "mv /tmp/cicd-lab.service /etc/systemd/system/cicd-lab.service"
       - name: Start application
         run: |
-          ssh -i deploy_key -o StrictHostKeyChecking=no ${{ env.HOST }} "systemctl daemon-reload && systemctl restart cicd-lab.service"
+          ssh -i deploy_key.pem -o StrictHostKeyChecking=no ${{ env.HOST }} "systemctl daemon-reload && systemctl restart cicd-lab.service"
