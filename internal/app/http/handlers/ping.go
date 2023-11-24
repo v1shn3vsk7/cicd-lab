@@ -8,5 +8,5 @@ import (
 
 // Ping ...
 func (h *Handlers) Ping(c echo.Context) error {
-	return c.JSON(http.StatusOK, "pong")
+	return c.JSON(http.StatusOK, "pong-pong")
 }
